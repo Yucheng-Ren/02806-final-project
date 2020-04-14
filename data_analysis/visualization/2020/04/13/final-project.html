@@ -138,8 +138,12 @@ window.onload = wrap_img;
   <div class="post-content e-content" itemprop="articleBody">
     <ul class="section-nav">
 <li class="toc-entry toc-h1"><a href="#Introduction">Introduction </a></li>
-<li class="toc-entry toc-h1"><a href="#Data-analysis">Data analysis </a></li>
-<li class="toc-entry toc-h1"><a href="#Comparison">Comparison </a></li>
+<li class="toc-entry toc-h1"><a href="#Data-analysis">Data analysis </a>
+<ul>
+<li class="toc-entry toc-h2"><a href="#Basic-Data-Analysis-and-preprocessing">Basic Data Analysis and preprocessing </a></li>
+</ul>
+</li>
+<li class="toc-entry toc-h1"><a href="#Comparison-with-Other-Infectious-Virus">Comparison with Other Infectious Virus </a></li>
 <li class="toc-entry toc-h1"><a href="#Cov19-Current-Situation">Cov19 Current Situation </a></li>
 <li class="toc-entry toc-h1"><a href="#some-plot-I've-made,-just-put-them-here-now">some plot I&#39;ve made, just put them here now </a></li>
 </ul><!--
@@ -175,14 +179,134 @@ window.onload = wrap_img;
 <h1 id="Data-analysis">
 <a class="anchor" href="#Data-analysis" aria-hidden="true"><span class="octicon octicon-link"></span></a>Data analysis<a class="anchor-link" href="#Data-analysis"> </a>
 </h1>
+<p>In this section, we would like to show the data we are using in the project and also present some of the statistics about the data.</p>
+
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Comparison">
-<a class="anchor" href="#Comparison" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison<a class="anchor-link" href="#Comparison"> </a>
+<h2 id="Basic-Data-Analysis-and-preprocessing">
+<a class="anchor" href="#Basic-Data-Analysis-and-preprocessing" aria-hidden="true"><span class="octicon octicon-link"></span></a>Basic Data Analysis and preprocessing<a class="anchor-link" href="#Basic-Data-Analysis-and-preprocessing"> </a>
+</h2>
+<p>There are 4 datasets we are using in this project which contain information about viruses of nCovid-19, EBOLA, H1N1, SARS. The first step here is to clean the data, extract columns we need and rename them to have the same names.</p>
+<p>Below is part of the data in each dataset</p>
+
+</div>
+</div>
+</div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+<details class="description">
+      <summary class="btn btn-sm" data-open="Hide Code" data-close="Show Code"></summary>
+        <p></p>
+<div class="input">
+
+<div class="inner_cell">
+    <div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#collapse-hide</span>
+
+<span class="c1"># cov19 preprocess</span>
+<span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Confirmed'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]]</span>
+<span class="n">cov19</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cov19</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'Mainland China'</span><span class="p">,</span> <span class="s1">'China'</span><span class="p">)</span>
+<span class="n">cov19</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># ebola preprocess</span>
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'No. of confirmed, probable and suspected cases'</span><span class="p">,</span>
+                     <span class="s1">'No. of confirmed, probable and suspected deaths'</span><span class="p">]]</span>
+<span class="n">ebola</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">)</span>
+<span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s1">'int'</span><span class="p">)</span>
+
+<span class="c1"># h1n1 preprocess</span>
+<span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="p">[[</span><span class="s1">'Update Time'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]]</span>
+<span class="n">h1n1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+
+<span class="c1"># sars preprocess</span>
+
+<span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cumulative number of case(s)'</span><span class="p">,</span> 
+                   <span class="s1">'Number of deaths'</span><span class="p">,</span> <span class="s1">'Number recovered'</span><span class="p">]]</span>
+<span class="n">sars</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+    </details>
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>&lt;ipython-input-21-f129cec4f816&gt;:7: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  cov19 = cov19.groupby(['Date', 'Country'])['Cases', 'Deaths', 'Recovered']
+&lt;ipython-input-21-f129cec4f816&gt;:14: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  ebola = ebola.groupby(['Date', 'Country'])['Cases', 'Deaths']
+&lt;ipython-input-21-f129cec4f816&gt;:24: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  h1n1 = h1n1.groupby(['Date', 'Country'])['Cases', 'Deaths']
+&lt;ipython-input-21-f129cec4f816&gt;:32: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  sars = sars.groupby(['Date', 'Country'])['Cases', 'Deaths', 'Recovered']
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>Novel Covid-19</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>EBOLA</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>H1N1</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p><strong>SARS</strong></p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered">
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Comparison-with-Other-Infectious-Virus">
+<a class="anchor" href="#Comparison-with-Other-Infectious-Virus" aria-hidden="true"><span class="octicon octicon-link"></span></a>Comparison with Other Infectious Virus<a class="anchor-link" href="#Comparison-with-Other-Infectious-Virus"> </a>
 </h1>
 </div>
 </div>
