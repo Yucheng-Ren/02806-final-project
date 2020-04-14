@@ -95,7 +95,7 @@ window.onload = wrap_img;
        • <span class="read-time" title="Estimated read time">
     
     
-      1 min read
+      2 min read
     
 </span></p>
 
@@ -212,14 +212,14 @@ window.onload = wrap_img;
 <span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Confirmed'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]]</span>
 <span class="n">cov19</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span> <span class="o">=</span> <span class="n">cov19</span><span class="p">[</span><span class="s1">'Country'</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">'Mainland China'</span><span class="p">,</span> <span class="s1">'China'</span><span class="p">)</span>
 <span class="n">cov19</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
-<span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]]</span>
 <span class="n">cov19</span> <span class="o">=</span> <span class="n">cov19</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="c1"># ebola preprocess</span>
 <span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'No. of confirmed, probable and suspected cases'</span><span class="p">,</span>
                      <span class="s1">'No. of confirmed, probable and suspected deaths'</span><span class="p">]]</span>
 <span class="n">ebola</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
-<span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]]</span>
 <span class="n">ebola</span> <span class="o">=</span> <span class="n">ebola</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 <span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Cases'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span> <span class="o">=</span> <span class="n">ebola</span><span class="p">[</span><span class="s1">'Deaths'</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -229,7 +229,7 @@ window.onload = wrap_img;
 <span class="c1"># h1n1 preprocess</span>
 <span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="p">[[</span><span class="s1">'Update Time'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]]</span>
 <span class="n">h1n1</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
-<span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]</span>
+<span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">]]</span>
 <span class="n">h1n1</span> <span class="o">=</span> <span class="n">h1n1</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 
 <span class="c1"># sars preprocess</span>
@@ -237,7 +237,7 @@ window.onload = wrap_img;
 <span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="p">[[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cumulative number of case(s)'</span><span class="p">,</span> 
                    <span class="s1">'Number of deaths'</span><span class="p">,</span> <span class="s1">'Number recovered'</span><span class="p">]]</span>
 <span class="n">sars</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">,</span> <span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
-<span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]</span>
+<span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'Date'</span><span class="p">,</span> <span class="s1">'Country'</span><span class="p">])[[</span><span class="s1">'Cases'</span><span class="p">,</span> <span class="s1">'Deaths'</span><span class="p">,</span> <span class="s1">'Recovered'</span><span class="p">]]</span>
 <span class="n">sars</span> <span class="o">=</span> <span class="n">sars</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
 </pre></div>
 
@@ -246,27 +246,6 @@ window.onload = wrap_img;
 </div>
 
     </details>
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stderr output_text">
-<pre>&lt;ipython-input-21-f129cec4f816&gt;:7: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  cov19 = cov19.groupby(['Date', 'Country'])['Cases', 'Deaths', 'Recovered']
-&lt;ipython-input-21-f129cec4f816&gt;:14: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  ebola = ebola.groupby(['Date', 'Country'])['Cases', 'Deaths']
-&lt;ipython-input-21-f129cec4f816&gt;:24: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  h1n1 = h1n1.groupby(['Date', 'Country'])['Cases', 'Deaths']
-&lt;ipython-input-21-f129cec4f816&gt;:32: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  sars = sars.groupby(['Date', 'Country'])['Cases', 'Deaths', 'Recovered']
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
 </div>
     
 
@@ -278,6 +257,96 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Country</th>
+      <th>Cases</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2020-01-22</td>
+      <td>Afghanistan</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2020-01-22</td>
+      <td>Albania</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2020-01-22</td>
+      <td>Algeria</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2020-01-22</td>
+      <td>Andorra</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2020-01-22</td>
+      <td>Angola</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -286,6 +355,90 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Country</th>
+      <th>Cases</th>
+      <th>Deaths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2014-08-29</td>
+      <td>Guinea</td>
+      <td>648</td>
+      <td>430</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2014-08-29</td>
+      <td>Liberia</td>
+      <td>1378</td>
+      <td>694</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2014-08-29</td>
+      <td>Nigeria</td>
+      <td>19</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2014-08-29</td>
+      <td>Sierra Leone</td>
+      <td>1026</td>
+      <td>422</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2014-09-05</td>
+      <td>Guinea</td>
+      <td>812</td>
+      <td>517</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -294,6 +447,90 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Country</th>
+      <th>Cases</th>
+      <th>Deaths</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>5/23/2009 8:00</td>
+      <td>Argentina</td>
+      <td>1</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>5/23/2009 8:00</td>
+      <td>Australia</td>
+      <td>12</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>5/23/2009 8:00</td>
+      <td>Austria</td>
+      <td>1</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>5/23/2009 8:00</td>
+      <td>Belgium</td>
+      <td>7</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5/23/2009 8:00</td>
+      <td>Brazil</td>
+      <td>8</td>
+      <td>0.0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
@@ -302,6 +539,96 @@ window.onload = wrap_img;
 </div>
 </div>
 </div>
+    
+    
+<div class="cell border-box-sizing code_cell rendered">
+
+<div class="output_wrapper">
+<div class="output">
+
+<div class="output_area">
+
+
+<div class="output_html rendered_html output_subarea output_execute_result">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Date</th>
+      <th>Country</th>
+      <th>Cases</th>
+      <th>Deaths</th>
+      <th>Recovered</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>2003-03-17</td>
+      <td>Canada</td>
+      <td>8</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2003-03-17</td>
+      <td>Germany</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2003-03-17</td>
+      <td>Hong Kong SAR, China</td>
+      <td>95</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2003-03-17</td>
+      <td>Singapore</td>
+      <td>20</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2003-03-17</td>
+      <td>Switzerland</td>
+      <td>2</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+    
+
 <div class="cell border-box-sizing text_cell rendered">
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
