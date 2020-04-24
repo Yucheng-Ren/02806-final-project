@@ -186,7 +186,7 @@ layout: notebook
 <!-- <div class="flourish-embed" data-src="./html/gdp.html" data-url="./html/gdp.html"></div> -->
 
 <div style="margin: 0 auto; width:100%; height:400px;">
-    <object type="text/html" data="html/gdp.html"
+    <object type="text/html" data="https://github.com/Narcissist1/02806-final-project/blob/master/_notebooks/html/gdp.html"
             style="width:100%; height:100%; margin:1%;">
     </object>
 </div>
