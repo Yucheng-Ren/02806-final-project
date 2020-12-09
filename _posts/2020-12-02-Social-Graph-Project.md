@@ -1,7 +1,7 @@
 ---
 keywords: fastai
 description: An analysis and visualization for security people using Twitter data.
-title: 02806 Final project 
+title: Social Graph Final project 
 toc: true 
 badges: false
 author: Peter Bom Jakobsen & Søren Fritzbøger & Yucheng Ren 
