@@ -29,7 +29,7 @@ layout: notebook
 
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>{% include important.html content='The dataset we were used to create the network comes from Twitter, you can view and download them from <a href="https://raw.githubusercontent.com/Glorforidor/SocialGraphAssignments/master/twitter_data.zip">here</a>. The Explainer <a href="">notebook</a>.' %}</p>
+<p>{% include important.html content='The dataset we were used to create the network comes from Twitter, you can view and download them from <a href="https://raw.githubusercontent.com/Glorforidor/SocialGraphAssignments/master/twitter_data.zip">here</a>. The Explainer <a href="https://nbviewer.jupyter.org/github/Glorforidor/SocialGraphAssignments/blob/master/explainer.ipynb">notebook</a>.' %}</p>
 
 </div>
 </div>
