@@ -181,49 +181,6 @@ layout: notebook
 </div>
 </div>
 </div>
-    {% raw %}
-    
-<div class="cell border-box-sizing code_cell rendered">
-
-<div class="output_wrapper">
-<div class="output">
-
-<div class="output_area">
-
-<div class="output_subarea output_stream output_stdout output_text">
-<pre>+------------------+---------+
-| Name             | Friends |
-+------------------+---------+
-| @HackingDave     |     216 |
-+------------------+---------+
-| @AlyssaM_InfoSec |     198 |
-+------------------+---------+
-| @RayRedacted     |     193 |
-+------------------+---------+
-| @NicoleBeckwith  |     178 |
-+------------------+---------+
-| @DfirDiva        |     170 |
-+------------------+---------+
-| @sherrod_im      |     161 |
-+------------------+---------+
-| @cybergeekgirl   |     161 |
-+------------------+---------+
-| @gabsmashh       |     160 |
-+------------------+---------+
-| @LisaForteUK     |     158 |
-+------------------+---------+
-| @UK_Daniel_Card  |     154 |
-+------------------+---------+
-</pre>
-</div>
-</div>
-
-</div>
-</div>
-
-</div>
-    {% endraw %}
-
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="References">References<a class="anchor-link" href="#References"> </a></h2><p>(1) <a href="https://www.vox.com/identities/2019/9/30/20891314/elon-musk-tesla-labor-violation-nlrb">https://www.vox.com/identities/2019/9/30/20891314/elon-musk-tesla-labor-violation-nlrb</a></p>
