@@ -47,7 +47,7 @@ layout: notebook
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset"> </a></h2><p>To prove to you that cyber security people are real people with real friends, we decided to stalk them on Twitter. By using the following search query, we found all the popular cyber security tweets:</p>
 <p><code>(infosec OR cve OR cybersec OR cybersecurity OR ransomware) -filter:retweets min_faves:10</code></p>
-<p>And yes, i know you're thinking "10 LiKes iS nOt PoPuLaR, I gEt 1000 oN mY InStA pOsTs", but 99% of those are bots that you paid for, so calm down "influencer" (😉).</p>
+<p>And yes, we know you're thinking "10 LiKes iS nOt PoPuLaR, I gEt 1000 oN mY InStA pOsTs", but 99% of those are bots that you paid for, so calm down "influencer" (😉).</p>
 <p>From this very beautiful query we get a long list of tweets from a long list of cyber security people. Furthermore, we get mentions to other people supposedly related to these cyber security people. From this list of important cyber security people we can now extract a looooot of data such as:</p>
 <ul>
 <li>Screen names.</li>
@@ -91,7 +91,7 @@ layout: notebook
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As you can see, the number of friends in our network clearly follows a power law distribution. Even in the world of "nerds", there are popular people. Now that we have debunked this very real and very serious myth that cyber security people have no friends (😉), let us move on to the next myth. That security people are split into two groups, where they either protect the world from evil forces, or they are evil forces (You know, split into defensive and offensive security😉)</p>
-<p>To explore this, why not discover communities within our network? Surely this will show that only two communities exist, and we can finally be right about something. To do this we have created this awesome histogram that should only show two communities (That is, if we are right, which we almost never are 😉</p>
+<p>To explore this, why not discover communities within our network? Surely this will show that only two communities exist, and we can finally be right about something. To do this we have created this awesome histogram that should only show two communities (That is, if we are right, which we almost never are 😉).</p>
 
 </div>
 </div>
@@ -177,6 +177,13 @@ layout: notebook
 <div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Aaaaand, we just received a email from "Nole Ksum"(5) telling us to stop this analysis, because he is not happy! (Neither are the communities. They are actually pretty neutral 😉)</p>
+
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>This concludes our story about security people on Twitter. If you wish to investigate or work further or you simply want a more serious story, see our Explainer <a href="https://nbviewer.jupyter.org/github/Glorforidor/SocialGraphAssignments/blob/master/explainer.ipynb">notebook</a>. If you want to play with the data yourself it can be downloaded from <a href="https://raw.githubusercontent.com/Glorforidor/SocialGraphAssignments/master/twitter_data.zip">here</a>.</p>
 
 </div>
 </div>
